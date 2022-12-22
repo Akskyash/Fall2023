@@ -1,0 +1,15 @@
+fs=8000; 
+f=400; 
+t=0:1/fs:1-1/fs; 
+AMP1=2; 
+powfund= AMP1^2/2; 
+AMP2=10; 
+powharm = AMP2^2/2; 
+S1=0.25; 
+S2=0.5; 
+FREQ1=14; 
+FREQ2=26; 
+x1 = AMP1*cos(2*pi*FREQ1*t) + AMP2*sin(2*pi*FREQ2*t) + S1*randn(size(t)); 
+THD=thd(x1) 
+BW=obw(x1,fs) 
+Capacity=BW*log2(1+THD) 
